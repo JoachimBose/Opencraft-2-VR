@@ -157,7 +157,14 @@ public class BatchProfiler : EditorWindow
     private void fetchFilesFromDir(TextField pathField, ref List<string> buf, ref ListView pathList, string pattern)
     {
         buf.Clear();
+
+        Debug.Log(pathList.childCount);
+        
         pathList.Clear();
+        foreach (VisualElement item in pathList.Children())
+        {
+            pathList.hierarchy.Remove(item);
+        }
 
         //Debug.Log(Application.dataPath);
         //Debug.Log(pathField.value);
@@ -368,7 +375,7 @@ public class BatchProfiler : EditorWindow
         VisualElement pathFieldLabel = new Label("please enter the path of the apk folder to batch");
         root.Add(pathFieldLabel);
 
-        string apkDefaultPath = "C:\\Users\\joach\\Desktop\\Opencraft-2-VR\\Builds\\HMD-mul-fly";
+        string apkDefaultPath = "C:\\Users\\joach\\Desktop\\Opencraft-2-VR\\Builds\\HMD-sing-fly";
         string serverDefaultPath = "C:\\Users\\joach\\Desktop\\Opencraft-2-VR\\Builds\\windows_builds";
         string defaultRemote = "joachim@192.168.23.94";
 
